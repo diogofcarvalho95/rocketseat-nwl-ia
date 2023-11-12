@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useCompletion } from 'ai/react'
 
 export function App() {
-  const [temperature, setTemperature] = useState(0.5)
+  const [temperature, setTemperature] = useState(0.6)
   const [videoId, setVideoId] = useState<string | null>(null)
 
   const {
@@ -22,7 +22,7 @@ export function App() {
     completion,
     isLoading,
   } = useCompletion({
-    api: 'https://upload-ai-server-ubt4.onrender.com:3333/ai/complete',
+    api: 'https://upload-ai-api-mxos.onrender.com/ai/complete',
     body: {
       videoId,
       temperature,
@@ -49,7 +49,7 @@ export function App() {
         <div className="flex flex-col flex-1 gap-4">
           <div className="grid grid-rows-2 gap-4 flex-1">
             <Textarea
-              className="resize-none p-4 leading-relaxed"
+              className="resize-none p-4 leading-relaxed hidden"
               placeholder="Inclua o prompt para a IA..."
               value={input}
               onChange={handleInputChange}
@@ -62,12 +62,13 @@ export function App() {
             />
           </div>
 
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground hidden">
             Lembre-se: você pode utilizar a variável <code className="text-violet-400">{`{transcription}`}</code> no seu prompt para adicionar o conteúdo da transcrição do vídeo selecionado.
           </p>
         </div>
 
         <aside className="w-80 space-y-6">
+
           <VideoInputForm onVideoUploaded={setVideoId} />
 
           <Separator />
@@ -78,7 +79,7 @@ export function App() {
               <PromptSelect onPromptSelected={setInput} />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 hidden">
               <Label>Modelo</Label>
               <Select disabled defaultValue="gpt3.5">
                 <SelectTrigger>
@@ -95,7 +96,7 @@ export function App() {
 
             <Separator />
 
-            <div className="space-y-4">
+            <div className="space-y-4 hidden">
               <Label>Temperatura</Label>
               <Slider
                 min={0}
@@ -109,7 +110,7 @@ export function App() {
               </span>
             </div>
 
-            <Separator />
+            <Separator className="hidden" />
 
             <Button disabled={isLoading} type="submit" className="w-full">
               Executar

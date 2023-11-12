@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://upload-ai-server-ubt4.onrender.com:3333',
+  baseURL: 'https://upload-ai-api-mxos.onrender.com/',
 });
