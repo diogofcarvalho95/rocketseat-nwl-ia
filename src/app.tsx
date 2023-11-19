@@ -36,7 +36,6 @@ export function App() {
     <div className="min-h-screen flex flex-col">
       <div className="px-6 py-3 flex items-center justify-between border-b">
         <h1 className="text-xl font-bold">upload.ai</h1>
-
         <div className="flex items-center gap-3">
           <Button variant="outline">
             <Github className="w-4 h-4 mr-2" />
@@ -50,13 +49,13 @@ export function App() {
           <div className="grid grid-rows-2 gap-4 flex-1">
             <Textarea
               className="resize-none p-4 leading-relaxed hidden"
-              placeholder="Inclua o prompt para a IA..."
+              placeholder="Incluir prompt para a IA..."
               value={input}
               onChange={handleInputChange}
             />
             <Textarea
               className="resize-none p-4 leading-relaxed"
-              placeholder="Resultado gerado pela IA"
+              placeholder="Resultado"
               readOnly
               value={completion}
             />
@@ -113,7 +112,7 @@ export function App() {
             <Separator className="hidden" />
 
             <Button disabled={isLoading} type="submit" className="w-full">
-              Executar
+              Criar
               <Wand2 className="w-4 h-4 ml-2" />
             </Button>
           </form>
